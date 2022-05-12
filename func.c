@@ -89,19 +89,51 @@ void Input_information() {
     
     struct MyInfo person[MAX];
     
-    printf("예매자 정보를 입력해주세요\n");
-    printf("이름 : ");
-    scanf("%s", &person[0].name/*, sizeof(person[0].name) / sizeof(char)*/);
+    char save;
+    Back1:
+        printf("예매자 정보를 입력해주세요\n");
     
-    printf("성별 : ");
-    scanf("%s", &person[0].gender);
+        printf("이름 : ");
+        scanf("%s", &person[0].name/*, sizeof(person[0].name) / sizeof(char)*/);
+    
+        printf("성별 : ");
+        scanf("%s", &person[0].gender);
 
-    printf("생년월일 : ");
-    scanf("%d")
+        printf("생년월일(6자리) : ");
+        scanf("%s", &person[0].birth);
 
-    printf("국적 : ");
-    scanf("%s")
+        printf("국적 : ");
+        scanf("%s", &person[0].nationality);
 
-    printf("이메일 : ");
-    scanf("%d")
+        printf("이메일 : ");
+        scanf("%s", &person[0].email);
+   
+
+        printf("------------------------------------------------------------------------------------\n");
+        printf("입력 된 정보를 확인해주세요\n");
+        printf("이름 : %s\n",person[0].name);
+        printf("성별 : %s\n",person[0].gender);
+        printf("생년월일 : %s\n",person[0].birth);
+        printf("국적 : %s\n",person[0].nationality);
+        printf("이메일 : %s\n",person[0].email);
+        printf("------------------------------------------------------------------------------------\n");
+    
+        //왜 2번이나 입력을 받냐???
+    Back2:
+        printf("저장하시겠습니까? (저장 : y / 수정 : n)\t");
+        scanf(" %c", &save);
+
+        if (save == 'y') {
+            printf("저장되었습니다.\n");
+        }
+        else if (save == 'n') {
+            system("cls");
+            goto Back1;//정보 다시 입력
+        }
+        else {
+            printf("※'y'와 'n'중에서 입력해주세요.\n");
+            goto Back2;
+        }
+        system("cls");//Clean Screen, 메인화면으로
+
 }

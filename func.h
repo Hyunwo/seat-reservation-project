@@ -1,14 +1,14 @@
 #pragma once	//중복 헤더 방지
 #include <stdio.h>
 #include <stdlib.h> //rand()함수를 사용하기 위해 호출
-#define MAX 2
+#define MAX 1
 //#include <time.h> //time()함수를 사용하기 위해 호출
 
 struct MyInfo
 {
 	char name[20];
 	char gender[5];
-	int yymmdd;
+	char birth[10];
 	char nationality[30];
 	char email[30];
 };
