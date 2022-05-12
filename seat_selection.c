@@ -1,7 +1,8 @@
 #include "func.h"
 
-int main()
+void seat_selection()//main -> void seat_selection으로 변경
 {
+    system("cls");
     int x[10][6]; //예약좌석을 표시하기 위한 2차원 배열
     int i, j; //i는 행, j는 열
 
@@ -14,5 +15,4 @@ int main()
     }
     Print_UI(x);//좌석 선택 화면
     Input_information();//사용자 정보 입력
-    return 0;
 }

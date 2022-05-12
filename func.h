@@ -13,5 +13,11 @@ struct MyInfo
 	char email[30];
 };
 
+
+int MainView();
+int OptionUiNum1();
+void banbok(int num);
+int view(int option);
+void seat_selection();
 void Print_UI(int x[10][6]); //좌석 지정 화면 만들기
 void Input_information();

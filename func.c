@@ -135,5 +135,4 @@ void Input_information() {
             goto Back2;
         }
         system("cls");//Clean Screen, 메인화면으로
-
 }
