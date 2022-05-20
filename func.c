@@ -1,8 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "func.h"
+int v;
+int b;
+struct MyInfo person[MAX];
 
 void Print_UI(int x[10][6]) {
     int i, j, k = 1; //i는 행, j는 열, k는 열 번호
     char c; //c는 문답을 위한 변수
+
+
 
     while (1) {
         printf("좌석번호를 행, 열 순서로 입력해주세요!\n");
@@ -75,6 +81,9 @@ void Print_UI(int x[10][6]) {
         }
         else if (c == 'n') {
             system("cls");
+            v = i;//행 값을 v에 저장, v는 extern 으로 selectNum1.c에서 선언해 주었기때문에 v값을 공유한다.
+            b = j;//행 값을 b에 저장, b는 extern 으로 selectNum1.c에서 선언해 주었기때문에 b값을 공유한다.
+
             Input_information();//다음 페이지로 이동
             break;//while문 종료
         }
@@ -86,53 +95,61 @@ void Print_UI(int x[10][6]) {
 }
 
 void Input_information() {
-    
-    struct MyInfo person[MAX];
-    
+
+
+
     char save;
-    Back1:
-        printf("예매자 정보를 입력해주세요\n");
-    
-        printf("이름 : ");
-        scanf("%s", &person[0].name/*, sizeof(person[0].name) / sizeof(char)*/);
-    
-        printf("성별 : ");
-        scanf("%s", &person[0].gender);
+Back1:
+    printf("예매자 정보를 입력해주세요\n");
 
-        printf("생년월일(6자리) : ");
-        scanf("%s", &person[0].birth);
+    printf("이름 : ");
+    scanf("%s", &person[0].name/*, sizeof(person[0].name) / sizeof(char)*/);
 
-        printf("국적 : ");
-        scanf("%s", &person[0].nationality);
 
-        printf("이메일 : ");
-        scanf("%s", &person[0].email);
-   
+    printf("성별 : ");
+    scanf("%s", &person[0].gender);
 
-        printf("------------------------------------------------------------------------------------\n");
-        printf("입력 된 정보를 확인해주세요\n");
-        printf("이름 : %s\n",person[0].name);
-        printf("성별 : %s\n",person[0].gender);
-        printf("생년월일 : %s\n",person[0].birth);
-        printf("국적 : %s\n",person[0].nationality);
-        printf("이메일 : %s\n",person[0].email);
-        printf("------------------------------------------------------------------------------------\n");
-    
-        //왜 2번이나 입력을 받냐???
-    Back2:
-        printf("저장하시겠습니까? (저장 : y / 수정 : n)\t");
-        scanf(" %c", &save);
 
-        if (save == 'y') {
-            printf("저장되었습니다.\n");
-        }
-        else if (save == 'n') {
-            system("cls");
-            goto Back1;//정보 다시 입력
-        }
-        else {
-            printf("※'y'와 'n'중에서 입력해주세요.\n");
-            goto Back2;
-        }
-        system("cls");//Clean Screen, 메인화면으로
+    printf("생년월일(6자리) : ");
+    scanf("%s", &person[0].birth);
+
+
+    printf("국적 : ");
+    scanf("%s", &person[0].nationality);
+
+
+    printf("이메일 : ");
+    scanf("%s", &person[0].email);
+
+
+
+    printf("------------------------------------------------------------------------------------\n");
+    printf("입력 된 정보를 확인해주세요\n");
+    printf("이름 : %s\n", person[0].name);
+    printf("성별 : %s\n", person[0].gender);
+    printf("생년월일 : %s\n", person[0].birth);
+    printf("국적 : %s\n", person[0].nationality);
+    printf("이메일 : %s\n", person[0].email);
+    printf("------------------------------------------------------------------------------------\n");
+
+    //왜 2번이나 입력을 받냐???
+Back2:
+    printf("저장하시겠습니까? (저장 : y / 수정 : n)\t");
+    scanf(" %c", &save);
+
+    if (save == 'y') {
+        printf("저장되었습니다.\n");
+
+    }
+    else if (save == 'n') {
+        system("cls");
+        goto Back1;//정보 다시 입력
+    }
+    else {
+        printf("※'y'와 'n'중에서 입력해주세요.\n");
+        goto Back2;
+    }
+    system("cls");//Clean Screen, 메인화면으로
+    MainView();
+
 }
