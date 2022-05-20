@@ -5,7 +5,7 @@ int b;
 struct MyInfo person[MAX];
 
 void Print_UI(int x[10][6]) {
-    int i, j, k = 1; //i는 행, j는 열, k는 열 번호
+    int i, j, k = 1; //i는 행, j는 열, k는 행 번호
     char c; //c는 문답을 위한 변수
 
 
@@ -18,7 +18,7 @@ void Print_UI(int x[10][6]) {
         for (i = 0; i < 10; i++) {
             printf("\t");
             for (j = 0; j < 6; j++) {
-                if (x[i][j] == 1) {     //예약된 좌석이면 '■', 열번호가 10이면 다시 1로 초기화
+                if (x[i][j] == 1) {     //예약된 좌석이면 '■', 행번호가 10이면 다시 1로 초기화
                     printf("■");
                     if (j == 2 && k != 10) {
                         printf("  %d  ", k);
@@ -30,7 +30,7 @@ void Print_UI(int x[10][6]) {
                     }
                 }
 
-                else {     //빈 좌석이면 '□', 열번호가 10이면 다시 1로 초기화
+                else {     //빈 좌석이면 '□', 행번호가 10이면 다시 1로 초기화
                     printf("□");
                     if (j == 2 && k != 10) {
                         printf("  %d  ", k);
