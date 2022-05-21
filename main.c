@@ -67,8 +67,9 @@ Back:
 		printf("오류\n");
 
 	}
-
 }
+
+
 
 int OptionUiNum1() {
 	system("cls");
@@ -151,7 +152,7 @@ int main() {
 		int menuCode = menu();
 		if (menuCode == 0) {
 			//항공권 예매
-			MainView();
+			//MainView();
 			OptionUiNum1();
 		}
 		else if (menuCode == 1) {
@@ -162,9 +163,8 @@ int main() {
 		}
 		else if (menuCode == 2) {
 			//좌석 확인
-
-
-
+			doubleCheck();
+			
 		}
 		else if (menuCode == 3) {
 			//종료
@@ -244,12 +244,6 @@ int key() {
 				case 72://스캔코드 - 아스키코드로 표현하지 못하는 2바이트짜리까지 표현한 코드
 					return UP;
 					break;
-				case 75:
-					return LEFT;
-					break;
-				case 77:
-					return RIGHT;
-					break;
 				case 80:
 					return DOWN;
 					break;
@@ -257,7 +251,7 @@ int key() {
 					break;
 				}
 			}
-			else if (key == 13) {
+			else if (key == 13) { //key == Enter
 				return SUBMIT;
 			}
 				
@@ -265,12 +259,40 @@ int key() {
 	}
 }
 
-void init() {
+void init() { //초기화 함수
 	system("mode con:cols=84 lines=30"); //col = 가로, lines = 세로
 	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE); //콘솔 헨들가져오기
 	CONSOLE_CURSOR_INFO ConsoleCursor;
 	ConsoleCursor.bVisible = 0; //false 또는 0 : 숨기기
 	ConsoleCursor.dwSize = 1;
 	SetConsoleCursorInfo(consoleHandle, &ConsoleCursor);
+}
 
+void doubleCheck() {
+	char save;
+	FILE* fp = fopen("test.txt", "r");
+	a = fscanf(fp, "%d", &option2);
+	if (a == 0) {//2메뉴를 통해 또는 좌석을 예약하지 않아 option2가 0이면(초기값) 예약 좌석이 없다고 표시후 메인메뉴로 간다.
+		printf("예약된 좌석이 없습니다.\n");
+		menu();
+	}
+Back1:
+	system("cls");
+	view(a);//view(선택한 도착지 시간 메뉴 값): 선택한 옵션의 숫자를 넣으면 그 값에 맞추어 정보 표시.
+	printf("행: %d 열:%d.\n", v, b);//예약했던 자리 번호 표시
+	printf("%s\n", person[0].name);//입력했던 이름 표시
+	printf("%s\n", person[0].gender);//입력했던 성별 표시
+	printf("%s\n", person[0].birth);//입력했던 생년월일 표시
+	printf("%s\n", person[0].nationality);// 입력했던 출신국가 표시
+	printf("%s\n", person[0].email);// 입력했던 이메일 표시
+	printf("y를 입력하면 메뉴로 돌아갑니다. ");
+	scanf("%s", &save);
+	if (save == 'y') {
+		system("cls");
+		fclose(fp);
+		menu();
+	}
+	else {
+		goto Back1;
+	}
 }

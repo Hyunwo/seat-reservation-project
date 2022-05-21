@@ -10,9 +10,7 @@
 //키보드 값
 #define UP 0
 #define DOWN 1
-#define LEFT 2
-#define RIGHT 3
-#define SUBMIT 4
+#define SUBMIT 3
 
 
 struct MyInfo
@@ -24,7 +22,8 @@ struct MyInfo
 	char email[30];
 };
 
-void init();
+void doubleCheck();
+void init(); //초기화 함수
 int key();
 void gotoxy(int x, int y);
 int menu();
@@ -34,4 +33,3 @@ int view(int option);
 void seat_selection();
 void Print_UI(int x[10][6]); //좌석 지정 화면 만들기
 void Input_information();
-#pragma once
