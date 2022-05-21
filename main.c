@@ -51,31 +51,98 @@ Back:
 
 }
 
-int view(int option) {//선택한 옵션의 숫자를 넣으면 그에 맞춰 선택한 옵션의 정보를 출력하는 함수
-	printf("선택한 옵션 넘버: %d\n", option2);
-	if (option == 1) {
-		printf("1.미국 - 로스엔젤레스(LAX)       2022/06/02/11:05      대한한공\n");
+int view(int h) {//선택한 옵션의 숫자를 넣으면 그에 맞춰 선택한 옵션의 정보를 출력하는 함수
+
+	if (option2 == 1) {
+
+
+
+
 	}
-	else if (option == 2) {
-		printf("2.미국 - 로스엔젤레스(LAX)       2022/06/10/17:35      대한한공\n");
+	else if (option2 == 2) {
+		if (h == 0) {
+			printf("목적지: 미국 - 로스엔젤레스(LAX)\n");
+		}
+		else if (h == 1) {
+			printf("날짜: 2022/06/10/17:35\n");
+		}
+		else if (h == 2) {
+			printf("항공사: 대한한공\n");
+		}
+
 	}
-	else if (option == 3) {
-		printf("3.미국 - 로스엔젤레스(LAX)       2022/06/22/06:30      진에어\n");
+	else if (option2 == 3) {
+
+		if (h == 0) {
+			printf(" 목적지: 미국 - 로스엔젤레스(LAX)\n");
+		}
+		else if (h == 1) {
+			printf("날짜:  2022/06/22/06:30\n");
+		}
+		else if (h == 2) {
+			printf("항공사:  진에어\n");
+		}
 	}
-	else if (option == 4) {
-		printf("4.미국 - 로스엔젤레스(LAX)       2022/06/28/18:15      진에어\n");
+	else if (option2 == 4) {
+
+		if (h == 0) {
+			printf("목적지: 미국 - 로스엔젤레스(LAX)\n");
+		}
+		else if (h == 1) {
+			printf("날짜:   2022/06/28/18:15\n");
+		}
+		else if (h == 2) {
+			printf("항공사:  진에어\n");
+		}
 	}
-	else if (option == 5) {
-		printf("5.일본 - 도쿄                    2022/06/03/13:10      대한한공\n");
+	else if (option2 == 5) {
+
+		if (h == 0) {
+			printf(" 목적지: 일본 - 도쿄\n");
+		}
+		else if (h == 1) {
+			printf("날짜:   2022/06/03/13:10 \n");
+		}
+		else if (h == 2) {
+			printf("항공사: 대한한공\n");
+		}
+
 	}
-	else if (option == 6) {
-		printf("6.일본 - 도쿄                    2022/06/08/15:35      대한항공\n");
+	else if (option2 == 6) {
+
+		if (h == 0) {
+			printf("목적지: 일본 - 도쿄\n");
+		}
+		else if (h == 1) {
+			printf("날짜:  2022/06/08/15:35 \n");
+		}
+		else if (h == 2) {
+			printf("항공사: 대한항공\n");
+		}
 	}
-	else if (option == 7) {
-		printf("7.일본 - 도쿄                    2022/06/17/20:40      진에어\n");
+	else if (option2 == 7) {
+
+		if (h == 0) {
+			printf("목적지: 일본 - 도쿄\n");
+		}
+		else if (h == 1) {
+			printf("날짜:  2022/06/17/20:40 \n");
+		}
+		else if (h == 2) {
+			printf(" 항공사: 진에어\n");
+		}
 	}
-	else if (option == 8) {
-		printf("8.일본 - 도쿄                    2022/06/30/07:50      진에어\n");
+	else if (option2 == 8) {
+
+		if (h == 0) {
+			printf("목적지: 일본 - 도쿄\n");
+		}
+		else if (h == 1) {
+			printf("날짜:   2022/06/30/07:50 \n");
+		}
+		else if (h == 2) {
+			printf("항공사: 진에어\n");
+		}
 	}
 	return option2;
 }
@@ -88,6 +155,8 @@ int main() {
 		int menuCode = menu();
 		if (menuCode == 0) {
 			//항공권 예매
+			FILE* fp1 = fopen("test2.txt", "w+");
+			fclose(fp1);
 			OptionUiNum1();
 		}
 		else if (menuCode == 2) {
@@ -99,7 +168,7 @@ int main() {
 		else if (menuCode == 4) {
 			//좌석 확인
 			doubleCheck();
-			
+
 		}
 		else if (menuCode == 6) {
 			//종료
@@ -119,6 +188,7 @@ void gotoxy(int x, int y) {
 	SetConsoleCursorPosition(consoleHandle, pos);
 }
 
+
 int menu() {
 	int x = 34;
 	int y = 17;
@@ -132,7 +202,7 @@ int menu() {
 	printf("  좌석 확인 ");
 	gotoxy(x, y + 6);
 	printf("    종료  ");
-	
+
 	while (1) { //무한 반복
 		int n = key(); //키 값 받아오기
 		switch (n) {
@@ -140,7 +210,7 @@ int menu() {
 			if (y > 17) {
 				gotoxy(x - 2, y);
 				printf(" "); //지우기
-				gotoxy(x - 2, y-=2); //두 칸 위로 이동
+				gotoxy(x - 2, y -= 2); //두 칸 위로 이동
 				printf(">"); //다시 그리기
 			}
 			break;
@@ -150,7 +220,7 @@ int menu() {
 			if (y < 23) {
 				gotoxy(x - 2, y);
 				printf(" ");
-				gotoxy(x - 2, y+=2); //두 칸 아래로 이동
+				gotoxy(x - 2, y += 2); //두 칸 아래로 이동
 				printf(">");
 			}
 			break;
@@ -165,7 +235,7 @@ int menu() {
 
 int key() {
 	int key;
-	
+
 	while (1)
 	{
 		if (_kbhit())//키보드가 입력된 상태인지 조사
@@ -189,7 +259,7 @@ int key() {
 			else if (key == 13) { //key == Enter
 				return SUBMIT;
 			}
-				
+
 		}
 	}
 }
@@ -207,19 +277,48 @@ void doubleCheck() {
 	char save;
 	FILE* fp = fopen("test.txt", "r");
 	a = fscanf(fp, "%d", &option2);
+
+	fscanf(fp, "%s", person[1].name);
+	fscanf(fp, "%s", person[1].gender);
+	fscanf(fp, "%s", person[1].birth);
+	fscanf(fp, "%s", person[1].nationality);
+	fscanf(fp, "%s", person[1].email);
+
 	if (a == 0) {//2메뉴를 통해 또는 좌석을 예약하지 않아 option2가 0이면(초기값) 예약 좌석이 없다고 표시후 메인메뉴로 간다.
 		printf("예약된 좌석이 없습니다.\n");
 		main();
 	}
 Return1:
 	system("cls");
-	view(a);//view(선택한 도착지 시간 메뉴 값): 선택한 옵션의 숫자를 넣으면 그 값에 맞추어 정보 표시.
-	printf("행: %d 열:%d.\n", v, b);//예약했던 자리 번호 표시
-	printf("%s\n", person[0].name);//입력했던 이름 표시
-	printf("%s\n", person[0].gender);//입력했던 성별 표시
-	printf("%s\n", person[0].birth);//입력했던 생년월일 표시
-	printf("%s\n", person[0].nationality);// 입력했던 출신국가 표시
-	printf("%s\n", person[0].email);// 입력했던 이메일 표시
+	printf("이름: %-34s", &person[1].name);
+	view(0);//view(선택한 도착지 시간 메뉴 값): 선택한 옵션의 숫자를 넣으면 그 값에 맞추어 정보 표시.
+	printf("\n");
+	printf("성별: %-35s", &person[1].gender);//입력했던 성별 표시
+	view(1);
+	printf("\n");
+	printf("생년월일: %-31s", &person[1].birth);//입력했던 생년월일 표시
+	view(2);
+	printf("\n");
+	printf("국가: %-35s\n", &person[1].nationality);
+	printf("\n");
+	printf("이메일: %s\n", &person[1].email);// 입력했던 이메일 표시
+	printf("\n");
+	printf("자리:\n");// 입력했던 출신국가 표시
+	FILE* fp1 = fopen("test2.txt", "a+");
+	int c;
+	while ((c = fgetc(fp1)) != EOF) {
+
+		putchar(c);
+
+	}
+	fclose(fp1);
+	printf("\n");
+
+	printf("\n");
+
+
+
+
 	printf("y를 입력하면 메뉴로 돌아갑니다. ");
 	scanf("%s", &save);
 	if (save == 'y') {

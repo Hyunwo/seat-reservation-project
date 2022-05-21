@@ -16,7 +16,7 @@
 struct MyInfo
 {
 	char name[20];
-	char gender[5];
+	char gender[10];
 	char birth[10];
 	char nationality[30];
 	char email[30];
