@@ -1,7 +1,7 @@
 #include "func.h"
 int v;
 int b;
-struct MyInfo person[MAX];
+struct MyInfo person[1];
 
 void Print_UI(int x[10][6]) {
     int i, j, k = 1; //i는 행, j는 열, k는 행 번호
@@ -96,7 +96,6 @@ void Print_UI(int x[10][6]) {
 void Input_information() {
 
 
-
     char save;
 Back1:
     printf("예매자 정보를 입력해주세요\n");
@@ -149,6 +148,6 @@ Back2:
         goto Back2;
     }
     system("cls");//Clean Screen, 메인화면으로
-    menu();
+    main();
 
 }

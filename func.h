@@ -6,7 +6,7 @@
 #include <conio.h>//콘솔 입출력 함수를 제공(kbhit, getch)
 //#include <time.h> //time()함수를 사용하기 위해 호출
 
-#define MAX 1
+//#define MAX 1
 //키보드 값
 #define UP 0
 #define DOWN 1
@@ -27,7 +27,6 @@ void init(); //초기화 함수
 int key();
 void gotoxy(int x, int y);
 int menu();
-int MainView();
 int OptionUiNum1();
 int view(int option);
 void seat_selection();

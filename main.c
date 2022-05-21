@@ -4,11 +4,7 @@ int option2;
 int a;
 extern int v;// 행을 담는 변수, extern을 앞에 붙여주어서 다른 c파일에서 같은 이름인 v 변수를 사용하면 그값을 공유함.
 extern int b;//열을 담는 변수, extern을 앞에 붙여주어서 다른 c파일에서 같은 이름인 b 변수를 사용하면 그값을 공유함.
-extern struct MyInfo person[MAX];
-
-
-
-
+extern struct MyInfo person[1];
 
 
 int OptionUiNum1() {
@@ -92,21 +88,20 @@ int main() {
 		int menuCode = menu();
 		if (menuCode == 0) {
 			//항공권 예매
-			//MainView();
 			OptionUiNum1();
 		}
-		else if (menuCode == 1) {
+		else if (menuCode == 2) {
 			//항공권 취소
 			option2 = 0;
 			system("cls");
 			menu();
 		}
-		else if (menuCode == 2) {
+		else if (menuCode == 4) {
 			//좌석 확인
 			doubleCheck();
 			
 		}
-		else if (menuCode == 3) {
+		else if (menuCode == 6) {
 			//종료
 			return 0;
 		}
@@ -214,9 +209,9 @@ void doubleCheck() {
 	a = fscanf(fp, "%d", &option2);
 	if (a == 0) {//2메뉴를 통해 또는 좌석을 예약하지 않아 option2가 0이면(초기값) 예약 좌석이 없다고 표시후 메인메뉴로 간다.
 		printf("예약된 좌석이 없습니다.\n");
-		menu();
+		main();
 	}
-Back1:
+Return1:
 	system("cls");
 	view(a);//view(선택한 도착지 시간 메뉴 값): 선택한 옵션의 숫자를 넣으면 그 값에 맞추어 정보 표시.
 	printf("행: %d 열:%d.\n", v, b);//예약했던 자리 번호 표시
@@ -230,9 +225,9 @@ Back1:
 	if (save == 'y') {
 		system("cls");
 		fclose(fp);
-		menu();
+		main();
 	}
 	else {
-		goto Back1;
+		goto Return1;
 	}
 }
