@@ -149,6 +149,6 @@ Back2:
         goto Back2;
     }
     system("cls");//Clean Screen, 메인화면으로
-    MainView();
+    menu();
 
 }

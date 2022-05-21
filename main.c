@@ -7,67 +7,7 @@ extern int b;//열을 담는 변수, extern을 앞에 붙여주어서 다른 c파일에서 같은 이름
 extern struct MyInfo person[MAX];
 
 
-int MainView() {// 첫 메인 화면
-	system("cls");
-	int selectNum = 0;
-Back:
-	printf("항공권 예매 프로그램\n\n");
-	printf("1. 항공권 예매\n\n");
-	printf("2. 항공권 취소\n\n");
-	printf("3. 좌석 확인\n\n");
-	printf("4. 종료\n\n");
-	printf("옵션을 선택해 주세요: ");
-	scanf("%d", &selectNum);
 
-	if (selectNum == 1) {//1을 선택하면 예약 메뉴인 OptionUiNum1()함수로 넘어간다.
-		system("cls");
-		OptionUiNum1();
-	}
-	else if (selectNum == 2) {//2를 선택하면 option2(도착지 시간 등을 설정하는 메뉴 선택값)를 0으로 초기화, 삭제함, 예약 삭제 메뉴
-		option2 = 0;
-		system("cls");
-		MainView();//다시 메뉴로 돌아감
-
-	}
-	if (selectNum == 3) {// 3을 선택하면 예약한 좌석의 정보를 불러온다.
-		char save;
-		FILE* fp = fopen("test.txt", "r");
-		a = fscanf(fp, "%d", &option2);
-		if (a == 0) {//2메뉴를 통해 또는 좌석을 예약하지 않아 option2가 0이면(초기값) 예약 좌석이 없다고 표시후 메인메뉴로 간다.
-			printf("예약된 좌석이 없습니다.\n");
-			MainView();
-		}
-	Back1:
-		system("cls");
-		view(a);//view(선택한 도착지 시간 메뉴 값): 선택한 옵션의 숫자를 넣으면 그 값에 맞추어 정보 표시.
-		printf("행: %d 열:%d.\n", v, b);//예약했던 자리 번호 표시
-		printf("%s\n", person[0].name);//입력했던 이름 표시
-		printf("%s\n", person[0].gender);//입력했던 성별 표시
-		printf("%s\n", person[0].birth);//입력했던 생년월일 표시
-		printf("%s\n", person[0].nationality);// 입력했던 출신국가 표시
-		printf("%s\n", person[0].email);// 입력했던 이메일 표시
-		printf("y를 입력하면 메뉴로 돌아갑니다. ");
-		scanf("%s", &save);
-		if (save == 'y') {
-			system("cls");
-			fclose(fp);
-			MainView();
-		}
-		else {
-			goto Back1;
-		}
-
-	}
-	else if (selectNum == 4) {
-
-
-		goto Back;
-	}
-	else {
-		printf("오류\n");
-
-	}
-}
 
 
 
