@@ -109,7 +109,6 @@ void Print_UI(int x[10][6]) {
 			goto ROW;
 		}
 
-
 		if (i < 1 || i > 10) {
 			printf("※행은 1 ~ 10까지 입니다. 다시 입력해주세요.\n");
 			while (getchar() != '\n') {}
@@ -156,9 +155,6 @@ void Print_UI(int x[10][6]) {
 		}
 		else if (c == 'n') {
 			system("cls");
-
-
-
 			Input_information();//다음 페이지로 이동
 			break;//while문 종료
 		}
@@ -170,8 +166,6 @@ void Print_UI(int x[10][6]) {
 }
 
 void Input_information() {
-
-
 	char save;
 Back1:
 	printf("예매자 정보를 입력해주세요\n");
@@ -179,22 +173,17 @@ Back1:
 	printf("이름 : ");
 	scanf("%s", &person[1].name/*, sizeof(person[0].name) / sizeof(char)*/);
 
-
 	printf("성별 : ");
 	scanf("%s", &person[1].gender);
-
 
 	printf("생년월일(6자리) : ");
 	scanf("%s", &person[1].birth);
 
-
 	printf("국적 : ");
 	scanf("%s", &person[1].nationality);
 
-
 	printf("이메일 : ");
 	scanf("%s", &person[1].email);
-
 
 
 	printf("------------------------------------------------------------------------------------\n");
@@ -220,7 +209,6 @@ Back2:
 		fprintf(fp, "%s\n", person[1].email);
 		fclose(fp);
 		printf("저장되었습니다.\n");
-
 	}
 	else if (save == 'n') {
 		system("cls");
@@ -232,16 +220,13 @@ Back2:
 	}
 	system("cls");//Clean Screen, 메인화면으로
 	main();
-
 }
 
 void selectMenu() {
 	while (1) {
-
 		int menuCode = menu_cursor();
-		if (menuCode == 0) {
+		if (menuCode == 0) { //항공권 예매
 			FILE* fp;
-			//항공권 예매
 			if (fp = fopen("test.txt", "r")) {
 
 			Return0:
@@ -258,14 +243,10 @@ void selectMenu() {
 					system("cls");
 					goto Return0;
 				}
-
 			}
 			else {
 				OptionUiNum1();
 			}
-
-
-
 		}
 		else if (menuCode == 2) {
 			FILE* fp;
@@ -300,28 +281,25 @@ void selectMenu() {
 				printf("이메일 : %s\n", &person[1].email);// 입력했던 이메일 표시
 				printf("\n");
 				printf("좌석 :\n");// 입력했던 출신국가 표시
+
 				FILE* fp1 = fopen("test2.txt", "a+");
 				int c;
 				while ((c = fgetc(fp1)) != EOF) {
-
 					putchar(c);
-
 				}
+
 				fclose(fp1);
 				printf("\n");
 				printf("\n");
 				printf("정말 삭제 하시겠습니까? y 입력시 삭제, 그외 입력시 메인메뉴로 이동\n");
 				printf("입력: ");
 				scanf("%s", &save);
-				if (save == 'y') {
+
+				if (save == 'y') { //항공권 취소
 					system("cls");
 					fclose(fp);
 					remove("test.txt");
 					remove("test2.txt");
-					//항공권 취소
-
-
-
 					main();
 				}
 				else {
@@ -329,14 +307,12 @@ void selectMenu() {
 					fclose(fp);
 					main();
 				}
-
 			}
 			else
 			{
 				char save2;
 			Return2:
 				system("cls");
-
 				printf("\n\n\n\n\n\n\n\n\n\n\n\n\n                             예약된 정보가 없습니다.\n\n\n\n");
 				printf("                      스페이스바를 입력하면 메뉴로 돌아갑니다.\n");
 
@@ -350,17 +326,12 @@ void selectMenu() {
 					system("cls");
 					goto Return2;
 				}
-
 			}
-
 			main();
-
-
 		}
 		else if (menuCode == 4) {
 			//좌석 확인
 			doubleCheck();
-
 		}
 		else if (menuCode == 6) {
 			//종료
@@ -512,13 +483,9 @@ void doubleCheck() {
 		}
 		fclose(fp1);
 		printf("\n");
-
 		printf("\n");
-
-
-
-
 		printf("스페이스바를 입력하면 메뉴로 돌아갑니다. ");
+
 		int key = getch();
 		if (key == 32) {
 
@@ -548,5 +515,4 @@ void doubleCheck() {
 			goto Return2;
 		}
 	}
-
 }
